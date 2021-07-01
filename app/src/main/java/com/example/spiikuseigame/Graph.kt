@@ -8,16 +8,18 @@ import androidx.room.Room
 
 class Graph : AppCompatActivity() {
 
-    private lateinit var db: GraphDataBase
-    private lateinit var dao:GraphDAO
+    private lateinit var db: TasksLocalDatabase
+    private lateinit var dao:TasksDao
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         this.db = Room.databaseBuilder(
             this,
-            GraphDataBase::class.java,
+            TasksLocalDatabase::class.java,
             "graph.db"
         ).build()
-        this.dao = this.db.GraphDAO()
+
+        this.dao = this.db.tasksDao()
+
 
         setContentView(R.layout.activity_graph)
 

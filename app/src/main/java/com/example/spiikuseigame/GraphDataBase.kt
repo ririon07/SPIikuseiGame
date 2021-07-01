@@ -2,8 +2,29 @@ package com.example.spiikuseigame
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.Room
+import android.content.Context
 
-@Database(entities = [Graph::class],version = 1)
-abstract class GraphDataBase: RoomDatabase() {
-    abstract fun GraphDAO(): GraphDAO
+@Database(entities = [Task::class], version = 1, exportSchema = false)
+abstract class TasksLocalDatabase : RoomDatabase() {
+    abstract fun tasksDao(): TasksDao
+
+    companion object {
+        private var INSTANCE: TasksLocalDatabase? = null
+        private val lock = Any()
+
+        fun getInstance(context: Context): TasksLocalDatabase =
+            INSTANCE ?: synchronized(lock) {
+                INSTANCE ?: Room.databaseBuilder(
+                    context.applicationContext,
+                    TasksLocalDatabase::class.java, "Tasks.db"
+                )
+                    .build()
+                    .also { INSTANCE = it }
+            }
+
+        fun destroyInstance() {
+            INSTANCE = null
+        }
+    }
 }

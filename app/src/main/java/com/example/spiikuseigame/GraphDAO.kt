@@ -1,16 +1,18 @@
 package com.example.spiikuseigame
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
-interface GraphDAO {
+interface TasksDao {
+    @Query("SELECT * FROM tasks WHERE name LIKE :taskName")
+    fun find(taskName: String): List<Task>
 
-    @Insert
-    fun insert(graph: Graph)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(task: Task)
 
-    @Query("select * from graphdata")
-    fun getAll(): LiveData<List<Graph>>
+    @Update
+    fun update(task: Task): Int
+
+    @Delete
+    fun delete(task: Task): Int
 }
