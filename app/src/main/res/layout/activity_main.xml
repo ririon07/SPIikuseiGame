@@ -110,7 +110,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.652"
-        app:srcCompat="@drawable/rika2" />
+        app:srcCompat="@drawable/azarasi" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

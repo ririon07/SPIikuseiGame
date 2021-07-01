@@ -98,18 +98,18 @@
         motion:constraintSetEnd="@+id/end"
         motion:motionInterpolator="linear"
         motion:autoTransition="animateToEnd"
-        motion:duration="2500" />
+        motion:duration="2400" />
     <Transition
         motion:constraintSetStart="@+id/end"
         motion:constraintSetEnd="@+id/step2"
         motion:autoTransition="animateToEnd"
         motion:motionInterpolator="linear"
-        motion:duration="2500" />
+        motion:duration="2400" />
     <Transition
         motion:constraintSetStart="@+id/step2"
         motion:constraintSetEnd="@+id/start"
         motion:autoTransition="animateToEnd"
         motion:motionInterpolator="linear"
-        motion:duration="2500" />
+        motion:duration="2400" />
 
 </MotionScene>
