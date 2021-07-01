@@ -26,11 +26,5 @@ abstract class GraphDataBase: RoomDatabase() {
             INSTANCE = null
         }
 
-        //   val testDatabase = GraphDataBase.getInstance(context)
-        //   val dao = testDatabase.GraphDAO()
-        // Dao のメソッドをコールすることにより DB の操作を実行
-        //val test = dao.find("hoge")
-        //dao.insert(newtest)
-        //dao.delete(deltest)
     }
 }

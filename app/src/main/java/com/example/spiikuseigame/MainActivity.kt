@@ -35,5 +35,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(earn)
 
         }
+           val testDatabase = GraphDataBase.getInstance(this)
+        //   val dao = testDatabase.GraphDAO()
+        // Dao のメソッドをコールすることにより DB の操作を実行
+        //val test = dao.find("hoge")
+        //dao.insert(newtest)
+        //dao.delete(deltest)
+
     }
 }
