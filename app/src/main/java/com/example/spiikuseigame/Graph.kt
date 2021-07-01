@@ -12,12 +12,13 @@ class Graph : AppCompatActivity() {
     private lateinit var dao:GraphDAO
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        this.db = Room.databaseBuilder(
-            this,
-            GraphDataBase::class.java,
-            "graph.db"
-        ).build()
-        this.dao = this.db.GraphDAO()
+//        this.db = Room.databaseBuilder(
+//            this,
+//            GraphDataBase::class.java,
+//            "graph.db"
+//        ).build()
+//
+//        this.dao = this.db.gDAO()
 
         setContentView(R.layout.activity_graph)
 
