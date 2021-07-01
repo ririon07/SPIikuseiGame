@@ -2,17 +2,20 @@ package com.example.spiikuseigame
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.PersistableBundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.spiikuseigame.databinding.ActivityMainBinding
-import kotlin.concurrent.timer
+
 
 class MainActivity : AppCompatActivity() {
+
+    // サイズ
+    /*private val frameHeight = 0
+    private val boxSize = 0
+    private val screenWidth = 0
+    private val screenHeight = 0
+
+    // 位置
+    private val boxY = 0f*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
