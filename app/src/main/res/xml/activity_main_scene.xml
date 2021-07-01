@@ -3,42 +3,113 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
-    <ConstraintSet android:id="@+id/start" />
-    <ConstraintSet android:id="@+id/end" >
+    <ConstraintSet android:id="@+id/start" >
         <Constraint
-            motion:layout_constraintVertical_bias="0.245"
-            android:layout_height="199dp"
+            motion:layout_constraintVertical_bias="0.791"
+            android:layout_height="270dp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            motion:layout_constraintHorizontal_bias="0.498"
+            motion:layout_constraintHorizontal_bias="0.196"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="146dp"
+            android:layout_width="190dp"
             motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-            android:id="@+id/test" />
+            android:id="@+id/character"
+            motion:layout_editor_absoluteX="27dp"
+            motion:layout_editor_absoluteY="311dp" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/end" >
+        <Constraint
+            motion:layout_constraintVertical_bias="0.109"
+            android:layout_height="270dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            motion:layout_constraintHorizontal_bias="0.475"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="190dp"
+            motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            android:id="@+id/character"
+            motion:layout_editor_absoluteX="89dp"
+            motion:layout_editor_absoluteY="343dp" />
+        <Constraint
+            android:id="@+id/character"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="209dp"
+            android:layout_height="251dp"
+            motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            motion:layout_constraintVertical_bias="0.109"
+            motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            motion:layout_constraintHorizontal_bias="0.475"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_editor_absoluteX="89dp"
+            motion:layout_editor_absoluteY="343dp" />
+        <Constraint
+            android:id="@+id/character"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="209dp"
+            android:layout_height="251dp"
+            motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            motion:layout_constraintVertical_bias="0.109"
+            motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            motion:layout_constraintHorizontal_bias="0.475"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_editor_absoluteX="89dp"
+            motion:layout_editor_absoluteY="343dp" />
+        <Constraint
+            android:id="@+id/character"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="209dp"
+            android:layout_height="251dp"
+            motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            motion:layout_constraintVertical_bias="0.109"
+            motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            motion:layout_constraintHorizontal_bias="0.475"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_editor_absoluteX="89dp"
+            motion:layout_editor_absoluteY="343dp" />
+        <Constraint
+            android:id="@+id/character"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="209dp"
+            android:layout_height="251dp"
+            motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            motion:layout_constraintVertical_bias="0.109"
+            motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            motion:layout_constraintHorizontal_bias="0.475"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_editor_absoluteX="89dp"
+            motion:layout_editor_absoluteY="343dp" />
     </ConstraintSet>
     <ConstraintSet android:id="@+id/step2" >
         <Constraint
-            motion:layout_constraintVertical_bias="0.838"
-            android:layout_height="199dp"
+            motion:layout_constraintVertical_bias="0.937"
+            android:layout_height="270dp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            motion:layout_constraintHorizontal_bias="0.833"
+            motion:layout_constraintHorizontal_bias="0.898"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="146dp"
+            android:layout_width="190dp"
             motion:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-            android:id="@+id/test" />
+            android:id="@+id/character"
+            motion:layout_editor_absoluteX="208dp"
+            motion:layout_editor_absoluteY="375dp" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
-        motion:autoTransition="animateToEnd" />
+        motion:motionInterpolator="linear"
+        motion:autoTransition="animateToEnd"
+        motion:duration="2500" />
     <Transition
         motion:constraintSetStart="@+id/end"
         motion:constraintSetEnd="@+id/step2"
-        motion:autoTransition="animateToEnd" />
+        motion:autoTransition="animateToEnd"
+        motion:motionInterpolator="linear"
+        motion:duration="2500" />
     <Transition
         motion:constraintSetStart="@+id/step2"
         motion:constraintSetEnd="@+id/start"
-        motion:autoTransition="animateToEnd" />
+        motion:autoTransition="animateToEnd"
+        motion:motionInterpolator="linear"
+        motion:duration="2500" />
 
 </MotionScene>

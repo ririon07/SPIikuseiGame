@@ -102,15 +102,15 @@
 
     <ImageView
         android:id="@+id/character"
-        android:layout_width="146dp"
-        android:layout_height="199dp"
+        android:layout_width="190dp"
+        android:layout_height="270dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.652"
-        app:srcCompat="@drawable/poteto1" />
+        app:srcCompat="@drawable/rika2" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
