@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(earn)
 
         }
-        val database = GraphDataBase.getInstance(this)
-        val grdao = database.gDAO()
-        val newGraph = GraphData(1, 2, 3)
-        grdao.insert(newGraph)
+//        val database = GraphDataBase.getInstance(this)
+//        val grdao = database.gDAO()
+//        val newGraph = GraphData(1, 2, 3)
+//        grdao.insert(newGraph)
 
     }
 }
