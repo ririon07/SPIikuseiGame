@@ -25,12 +25,16 @@ class Graph : AppCompatActivity() {
 
         val database = GraphDataBase.getInstance(this)
         val grdao = database.gDAO()
-        val newGraph = GraphData(1, 2, 3)
+        val newGraph = GraphData(3, 4, 4)
 
         GlobalScope.launch {
-            //grdao.insert(newGraph)
+            grdao.insert(newGraph)
+        }
+
+        GlobalScope.launch {
             grdao.find()
         }
+
 
 
         //ホーム画面に遷移

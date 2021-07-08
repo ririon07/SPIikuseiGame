@@ -1,6 +1,5 @@
 package com.example.spiikuseigame
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
