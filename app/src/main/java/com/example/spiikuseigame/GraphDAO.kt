@@ -5,15 +5,15 @@ import androidx.room.*
 
 @Dao
 interface GraphDAO {
-    @Query("select * from graphs")
-    fun find(): LiveData<List<Graph>>
+    @Query("SELECT * FROM graphs")
+    fun find(): List<GraphData>
 
     @Insert
-    fun insert(graph: Graph)
+    fun insert(graph: GraphData)
 
     @Update
-    fun update(graph: Graph): Int
+    fun update(graph: GraphData): Int
 
     @Delete
-    fun delete(graph: Graph): Int
+    fun delete(graph: GraphData): Int
 }

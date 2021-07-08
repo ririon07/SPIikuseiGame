@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class Graph : AppCompatActivity() {
 
@@ -16,9 +18,20 @@ class Graph : AppCompatActivity() {
 //            GraphDataBase::class.java,
 //            "graph.db"
 //        ).build()
+//
 //        this.dao = this.db.gDAO()
 
         setContentView(R.layout.activity_graph)
+
+        val database = GraphDataBase.getInstance(this)
+        val grdao = database.gDAO()
+        val newGraph = GraphData(1, 2, 3)
+
+        GlobalScope.launch {
+            //grdao.insert(newGraph)
+            grdao.find()
+        }
+
 
         //ホーム画面に遷移
         val backButton = findViewById<Button>(R.id.backButton)
