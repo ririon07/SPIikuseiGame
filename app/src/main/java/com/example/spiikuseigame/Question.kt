@@ -10,12 +10,16 @@ class Question : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
+
+
+
         //ホーム画面に遷移
         val backButton3 = findViewById<Button>(R.id.backButton3)
         backButton3.setOnClickListener {
             val back = Intent(this, Earn::class.java)
             startActivity(back)
         }
+
 
     }
 }

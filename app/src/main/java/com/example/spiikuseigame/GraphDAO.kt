@@ -1,16 +1,19 @@
 package com.example.spiikuseigame
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-/*
+import androidx.room.*
+
 @Dao
 interface GraphDAO {
+    @Query("select * from graph")
+    fun getAll(): LiveData<List<Graph>>
 
     @Insert
     fun insert(graph: Graph)
 
-    @Query("select * from graphdata")
-    fun getAll(): LiveData<List<Graph>>
-}*/
+    @Update
+    fun update(task: Graph): Int
+
+    @Delete
+    fun delete(task: Graph): Int
+}

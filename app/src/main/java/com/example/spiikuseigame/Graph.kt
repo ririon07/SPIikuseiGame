@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.room.Room
 
 class Graph : AppCompatActivity() {
-/*
+
     private lateinit var db: GraphDataBase
     private lateinit var dao:GraphDAO
     override fun onCreate(savedInstanceState: Bundle?){
@@ -28,5 +28,5 @@ class Graph : AppCompatActivity() {
             startActivity(back)
 
         }
-    }*/
+    }
 }
