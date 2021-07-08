@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Graph::class],version = 1,exportSchema = false)
+@Database(entities = [GraphData::class],version = 1,exportSchema = false)
 abstract class GraphDataBase: RoomDatabase() {
-    abstract fun GraphDAO(): GraphDAO
+    abstract fun gDAO(): GraphDAO
     companion object {
         private var INSTANCE: GraphDataBase? = null
         private val lock = Any()
@@ -16,15 +16,12 @@ abstract class GraphDataBase: RoomDatabase() {
             INSTANCE ?: synchronized(lock) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    GraphDataBase::class.java, "graph.db"
+                    GraphDataBase::class.java, "graphs.db"
                 )
                     .build()
                     .also { INSTANCE = it }
             }
 
-        fun destroyInstance() {
-            INSTANCE = null
-        }
 
     }
 }
