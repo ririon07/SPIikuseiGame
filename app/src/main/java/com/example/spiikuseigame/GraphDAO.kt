@@ -15,4 +15,5 @@ interface GraphDAO {
 
     @Delete
     fun delete(graph: GraphData): Int
+
 }

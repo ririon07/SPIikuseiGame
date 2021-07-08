@@ -26,16 +26,27 @@ class Graph : AppCompatActivity() {
         val database = GraphDataBase.getInstance(this)
         val grdao = database.gDAO()
         val newGraph = GraphData(3, 4, 4)
+        val deletegraph = GraphData(1,2,3)
 
         GlobalScope.launch {
-            grdao.insert(newGraph)
+             // grdao.find()
         }
 
-        GlobalScope.launch {
-            grdao.find()
+        //データを追加
+        val addButton = findViewById<Button>(R.id.addButton)
+        addButton.setOnClickListener {
+            GlobalScope.launch {
+                grdao.insert(newGraph)
+            }
         }
 
-
+        //データを削除
+        val deleteButton = findViewById<Button>(R.id.deleteButton)
+        deleteButton.setOnClickListener {
+            GlobalScope.launch {
+                grdao.delete(deletegraph)
+            }
+        }
 
         //ホーム画面に遷移
         val backButton = findViewById<Button>(R.id.backButton)
