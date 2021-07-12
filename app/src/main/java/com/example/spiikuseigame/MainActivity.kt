@@ -8,15 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // サイズ
-    /*private val frameHeight = 0
-    private val boxSize = 0
-    private val screenWidth = 0
-    private val screenHeight = 0
-
-    // 位置
-    private val boxY = 0f*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             val earn = Intent(this, Earn::class.java)
             startActivity(earn)
 
+            //プッシュテスト
         }
     }
 }
