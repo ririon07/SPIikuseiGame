@@ -4,38 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class Graph : AppCompatActivity() {
-
-    private lateinit var db: GraphDataBase
-    private lateinit var dao:GraphDAO
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-//        this.db = Room.databaseBuilder(
-//            this,
-//            GraphDataBase::class.java,
-//            "graph.db"
-//        ).build()
-//
-//        this.dao = this.db.gDAO()
-
         setContentView(R.layout.activity_graph)
-
-        val database = GraphDataBase.getInstance(this)
-        val grdao = database.gDAO()
-        val newGraph = GraphData(3, 4, 4)
-
-        GlobalScope.launch {
-            grdao.insert(newGraph)
-        }
-
-        GlobalScope.launch {
-            grdao.find()
-        }
-
-
 
         //ホーム画面に遷移
         val backButton = findViewById<Button>(R.id.backButton)

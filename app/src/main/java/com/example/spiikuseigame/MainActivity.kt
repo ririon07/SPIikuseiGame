@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             val earn = Intent(this, Earn::class.java)
             startActivity(earn)
 
-            //プッシュテスト
         }
     }
 }
