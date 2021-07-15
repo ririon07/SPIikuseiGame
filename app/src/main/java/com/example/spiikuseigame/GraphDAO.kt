@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Dao
 interface GraphDAO {
-    @Query("SELECT * FROM graphs")
+/*    @Query("SELECT * FROM graphs")
     fun find(): List<GraphData>
 
     @Insert
@@ -15,5 +15,5 @@ interface GraphDAO {
 
     @Delete
     fun delete(graph: GraphData): Int
-
+*/
 }

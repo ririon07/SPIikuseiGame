@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [Graph::class],version = 1,exportSchema = false)
 abstract class GraphDataBase: RoomDatabase() {
-    abstract fun GraphDAO(): GraphDAO
+/*    abstract fun GraphDAO(): GraphDAO
     companion object {
         private var INSTANCE: GraphDataBase? = null
         private val lock = Any()
@@ -32,5 +32,5 @@ abstract class GraphDataBase: RoomDatabase() {
         //val test = dao.find("hoge")
         //dao.insert(newtest)
         //dao.delete(deltest)
-    }
+    }*/
 }

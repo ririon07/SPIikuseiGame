@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class Graph : AppCompatActivity() {
 
-    private lateinit var db: GraphDataBase
+/*    private lateinit var db: GraphDataBase
     private lateinit var dao:GraphDAO
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -44,5 +44,5 @@ class Graph : AppCompatActivity() {
             startActivity(back)
 
         }
-    }
+    }*/
 }
