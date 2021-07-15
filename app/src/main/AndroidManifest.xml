@@ -11,7 +11,7 @@
         android:theme="@style/Theme.SPIikuseiGame">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@xml/MainActivityDesign" />
+            android:resource="@drawable/mainactivitydesign" />
 
         <activity android:name=".Question" />
         <activity android:name=".Earn" />
