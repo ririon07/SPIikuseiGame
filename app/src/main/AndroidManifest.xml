@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPIikuseiGame">
-        <activity android:name=".Question"></activity>
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/MainActivityDesign" />
+
+        <activity android:name=".Question" />
         <activity android:name=".Earn" />
         <activity android:name=".Graph" />
         <activity android:name=".MainActivity">
