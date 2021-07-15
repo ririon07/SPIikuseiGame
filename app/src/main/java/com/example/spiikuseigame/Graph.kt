@@ -15,7 +15,6 @@ class Graph : AppCompatActivity() {
         backButton.setOnClickListener {
             val back = Intent(this, MainActivity::class.java)
             startActivity(back)
-
         }
     }
 }
