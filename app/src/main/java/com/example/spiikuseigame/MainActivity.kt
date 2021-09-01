@@ -11,8 +11,9 @@ import com.example.spiikuseigame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val dbName: String = "SampleDB"
-    private val tableName: String = "SampleTable"
+    private val dbName: String = "DB"
+    private val tableName: String = "sumTable"
+    private val tableName2: String = "monthTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
     private var arrayListName: ArrayList<String> = arrayListOf()
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         //グラフ画面へ画面遷移
