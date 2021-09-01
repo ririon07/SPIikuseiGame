@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,15 +44,17 @@ class MainActivity : AppCompatActivity() {
     //insertData(,,)
     //arrayListId.get()
 
-    private fun insertData(id: String, name: String, type: Int) {
+    private fun insertData(id: String,right: Int,incorrect: Int,answer: Int,days: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val values = ContentValues()
             values.put("id", id)
-            values.put("name", name)
-            values.put("type", type)
+            values.put("right", right)
+            values.put("incorrect", incorrect)
+            values.put("answer", answer)
+            values.put("days",days)
 
             database.insertOrThrow(tableName, null, values)
         }catch(exception: Exception) {
@@ -59,15 +62,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertData2(id: String, name: String, type: Int) {
+    private fun insertData2(id: String,right: Int,incorrect: Int,answer: Int,days: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val values = ContentValues()
             values.put("id", id)
-            values.put("name", name)
-            values.put("type", type)
+            values.put("right", right)
+            values.put("incorrect", incorrect)
+            values.put("answer", answer)
+            values.put("days", days)
+
 
             database.insertOrThrow(tableName2, null, values)
         }catch(exception: Exception) {
@@ -83,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
-            val sql = "select id, name, type from " + tableName + ";"
+            val sql = "select id, right, incorrect, answer, days from " + tableName + ";"
 
             val cursor = database.rawQuery(sql, null)
             if (cursor.count > 0) {
@@ -107,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
-            val sql = "select id, name, type from " + tableName2 + ";"
+            val sql = "select id, right, incorrect, answer, days from " + tableName2 + ";"
 
             val cursor = database.rawQuery(sql, null)
             if (cursor.count > 0) {
