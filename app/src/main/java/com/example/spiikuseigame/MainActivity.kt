@@ -59,6 +59,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun insertData2(id: String, name: String, type: Int) {
+        try {
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
+            val database = dbHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put("id", id)
+            values.put("name", name)
+            values.put("type", type)
+
+            database.insertOrThrow(tableName2, null, values)
+        }catch(exception: Exception) {
+            Log.e("insertData2", exception.toString())
+        }
+    }
+
+
     private fun selectData() {
         try {
             arrayListId.clear();arrayListName.clear();arrayListType.clear()
@@ -82,5 +99,30 @@ class MainActivity : AppCompatActivity() {
             Log.e("selectData", exception.toString());
         }
     }
+
+    private fun selectData2() {
+        try {
+            arrayListId.clear();arrayListName.clear();arrayListType.clear()
+
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
+            val database = dbHelper.readableDatabase
+
+            val sql = "select id, name, type from " + tableName2 + ";"
+
+            val cursor = database.rawQuery(sql, null)
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                    arrayListId.add(cursor.getString(0))
+                    arrayListName.add(cursor.getString(1))
+                    arrayListType.add(cursor.getInt(2))
+                    cursor.moveToNext()
+                }
+            }
+        }catch(exception: Exception) {
+            Log.e("selectData2", exception.toString());
+        }
+    }
+
 
 }
