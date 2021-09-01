@@ -12,7 +12,8 @@ import com.example.spiikuseigame.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val dbName: String = "DB"
-    private val tableName: String = "SampleTable"
+    private val tableName: String = "sumTable"
+    private val tableName2: String = "monthTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
     private var arrayListName: ArrayList<String> = arrayListOf()
