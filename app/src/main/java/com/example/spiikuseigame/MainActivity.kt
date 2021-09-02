@@ -17,18 +17,25 @@ class MainActivity : AppCompatActivity() {
     private val tableName2: String = "monthTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
-    private var arrayListName: ArrayList<String> = arrayListOf()
-    private var arrayListType: ArrayList<Int> = arrayListOf()
+    private var arrayListCorrect: ArrayList<Int> = arrayListOf()
+    private var arrayListIncorrect: ArrayList<Int> = arrayListOf()
+    private var arrayListAnswer: ArrayList<Int> = arrayListOf()
+    private var arrayListDays: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        insertData("国語",1,0,1,"yyyy/MM/ss")
-        insertData2("国語",1,0,1,"yyyy/MM/ss")
+        //insertData("国語",1,0,1,"yyyy/MM/ss")
+        //insertData2("国語",1,0,1,"yyyy/MM/ss")
         selectData()
-        selectData2()
+        for(i in arrayListId.indices){
+            println(arrayListId[i])
+        }
+        //selectData2()
+        //arrayListId.get(0)
+
 
         //グラフ画面へ画面遷移
         val graphButton = findViewById<Button>(R.id.graphButton)
@@ -63,8 +70,6 @@ class MainActivity : AppCompatActivity() {
         }catch(exception: Exception) {
             Log.e("insertData", exception.toString())
         }
-        //insertData("国語",1,0,1,"yyyy/MM/ss")
-        //arrayListId.get()
     }
 
 
@@ -84,13 +89,12 @@ class MainActivity : AppCompatActivity() {
         }catch(exception: Exception) {
             Log.e("insertData2", exception.toString())
         }
-        //insertData2("国語",1,0,1,"yyyy/MM/ss")
     }
 
 
     private fun selectData() {
         try {
-            arrayListId.clear();arrayListName.clear();arrayListType.clear()
+            arrayListId.clear();arrayListCorrect.clear();arrayListIncorrect.clear();arrayListAnswer.clear();arrayListDays.clear()
 
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
@@ -102,8 +106,10 @@ class MainActivity : AppCompatActivity() {
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
                     arrayListId.add(cursor.getString(0))
-                    arrayListName.add(cursor.getString(1))
-                    arrayListType.add(cursor.getInt(2))
+                    arrayListCorrect.add(cursor.getInt(1))
+                    arrayListIncorrect.add(cursor.getInt(2))
+                    arrayListAnswer.add(cursor.getInt(3))
+                    arrayListDays.add(cursor.getString(4))
                     cursor.moveToNext()
                 }
             }
@@ -114,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun selectData2() {
         try {
-            arrayListId.clear();arrayListName.clear();arrayListType.clear()
+            arrayListId.clear();arrayListCorrect.clear();arrayListIncorrect.clear();arrayListAnswer.clear();arrayListDays.clear()
 
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
@@ -126,8 +132,10 @@ class MainActivity : AppCompatActivity() {
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
                     arrayListId.add(cursor.getString(0))
-                    arrayListName.add(cursor.getString(1))
-                    arrayListType.add(cursor.getInt(2))
+                    arrayListCorrect.add(cursor.getInt(1))
+                    arrayListIncorrect.add(cursor.getInt(2))
+                    arrayListAnswer.add(cursor.getInt(3))
+                    arrayListDays.add(cursor.getString(4))
                     cursor.moveToNext()
                 }
             }
