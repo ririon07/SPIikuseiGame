@@ -23,9 +23,9 @@ public class SQLiteOpen (context: Context,
 //    }
     override fun onCreate(database: SQLiteDatabase?) {
         database?.execSQL(
-            "create table if not exists sumTable (id text primary key, name text)");
+            "create table if not exists sumTable (id text, correct text, incorrect text, answer text, days text)");
         database?.execSQL(
-            "create table if not exists monthTable (id text primary key, name text)");
+            "create table if not exists monthTable (id text, correct text, incorrect text, answer text, days text)");
 
     }
 

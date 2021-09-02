@@ -44,14 +44,14 @@ class MainActivity : AppCompatActivity() {
     //insertData(,,)
     //arrayListId.get()
 
-    private fun insertData(id: String,right: Int,incorrect: Int,answer: Int,days: String) {
+    private fun insertData(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val values = ContentValues()
             values.put("id", id)
-            values.put("right", right)
+            values.put("correct", correct)
             values.put("incorrect", incorrect)
             values.put("answer", answer)
             values.put("days",days)
@@ -62,14 +62,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertData2(id: String,right: Int,incorrect: Int,answer: Int,days: String) {
+    private fun insertData2(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val values = ContentValues()
             values.put("id", id)
-            values.put("right", right)
+            values.put("correct", correct)
             values.put("incorrect", incorrect)
             values.put("answer", answer)
             values.put("days", days)
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
-            val sql = "select id, right, incorrect, answer, days from " + tableName + ";"
+            val sql = "select id, correct, incorrect, answer, days from " + tableName + ";"
 
             val cursor = database.rawQuery(sql, null)
             if (cursor.count > 0) {
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
             val database = dbHelper.readableDatabase
 
-            val sql = "select id, right, incorrect, answer, days from " + tableName2 + ";"
+            val sql = "select id, correct, incorrect, answer, days from " + tableName2 + ";"
 
             val cursor = database.rawQuery(sql, null)
             if (cursor.count > 0) {
