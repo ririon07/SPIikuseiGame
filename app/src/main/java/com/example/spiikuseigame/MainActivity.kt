@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        insertData("国語",1,0,1,"yyyy/MM/ss")
+        insertData2("国語",1,0,1,"yyyy/MM/ss")
+        selectData()
+        selectData2()
+
         //グラフ画面へ画面遷移
         val graphButton = findViewById<Button>(R.id.graphButton)
         graphButton.setOnClickListener {
@@ -41,8 +46,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //insertData(,,)
-    //arrayListId.get()
 
     private fun insertData(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
         try {
@@ -60,7 +63,10 @@ class MainActivity : AppCompatActivity() {
         }catch(exception: Exception) {
             Log.e("insertData", exception.toString())
         }
+        //insertData("国語",1,0,1,"yyyy/MM/ss")
+        //arrayListId.get()
     }
+
 
     private fun insertData2(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
         try {
@@ -74,11 +80,11 @@ class MainActivity : AppCompatActivity() {
             values.put("answer", answer)
             values.put("days", days)
 
-
             database.insertOrThrow(tableName2, null, values)
         }catch(exception: Exception) {
             Log.e("insertData2", exception.toString())
         }
+        //insertData2("国語",1,0,1,"yyyy/MM/ss")
     }
 
 
@@ -129,6 +135,4 @@ class MainActivity : AppCompatActivity() {
             Log.e("selectData2", exception.toString());
         }
     }
-
-
 }
