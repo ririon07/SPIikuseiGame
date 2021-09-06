@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPIikuseiGame">
+        <activity android:name=".Question2"></activity>
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@drawable/mainactivitydesign" />

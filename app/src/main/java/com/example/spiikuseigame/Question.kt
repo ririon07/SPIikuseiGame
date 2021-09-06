@@ -12,6 +12,13 @@ class Question : AppCompatActivity() {
 
 
         //ホーム画面に遷移
+        val kokugoButton = findViewById<Button>(R.id.kokugo)
+        kokugoButton.setOnClickListener {
+            val back = Intent(this, Question2::class.java)
+            startActivity(back)
+        }
+
+        //ホーム画面に遷移
         val backButton3 = findViewById<Button>(R.id.backButton3)
         backButton3.setOnClickListener {
             val back = Intent(this, Earn::class.java)
