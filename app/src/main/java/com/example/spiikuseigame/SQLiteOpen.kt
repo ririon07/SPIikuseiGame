@@ -26,7 +26,8 @@ public class SQLiteOpen (context: Context,
             "create table if not exists sumTable (id text, correct text, incorrect text, answer text, days text)");
         database?.execSQL(
             "create table if not exists monthTable (id text, correct text, incorrect text, answer text, days text)");
-
+        database?.execSQL(
+            "create table if not exists QuestionTable (id int, genre int, question text, ans1 text, ans2 text, ans3 text, ans4 text, Answer text)");
     }
 
     override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -35,6 +36,10 @@ public class SQLiteOpen (context: Context,
                 "alter table sumTable add column deleteFlag integer default 0")
             database?.execSQL(
                 "alter table monthTable add column deleteFlag integer default 0")
+            database?.execSQL(
+                    "alter table QuestionTable add column deleteFlag integer default 0")
         }
     }
+
+
 }
