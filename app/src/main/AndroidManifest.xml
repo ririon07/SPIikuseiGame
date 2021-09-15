@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPIikuseiGame">
-        <activity android:name=".Answer"></activity>
+        <activity android:name=".Answer" />
         <activity android:name=".Question2" />
 
         <meta-data

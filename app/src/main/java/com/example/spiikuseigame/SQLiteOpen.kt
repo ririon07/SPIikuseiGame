@@ -27,7 +27,7 @@ public class SQLiteOpen (context: Context,
         database?.execSQL(
             "create table if not exists monthTable (id text, correct text, incorrect text, answer text, days text)");
         database?.execSQL(
-            "create table if not exists QuestionTable (id int, genre int, question text, ans1 text, ans2 text, ans3 text, ans4 text, Answer text)");
+            "create table if not exists QuestionTable (id text, genre int, question text, ans1 text, ans2 text, ans3 text, ans4 text, Answer text)");
     }
 
     override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

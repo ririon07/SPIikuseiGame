@@ -1,30 +1,36 @@
 package com.example.spiikuseigame
 
-import Answer
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
+import androidx.appcompat.app.AlertDialog
 import java.util.ArrayList
 
 class Question : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val dbName: String = "DB"
-    private val tableName: String = "QusetionTable"
+    private val tableName: String = "QuestionTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
-    private var arrayListCorrect: ArrayList<Int> = arrayListOf()
-    private var arrayListIncorrect: ArrayList<Int> = arrayListOf()
-    private var arrayListAnswer: ArrayList<Int> = arrayListOf()
-    private var arrayListDays: ArrayList<String> = arrayListOf()
+    private var arrayListGenre: ArrayList<String> = arrayListOf()
+    private var arrayListQuestion: ArrayList<String> = arrayListOf()
+    private var arrayListans1: ArrayList<String> = arrayListOf()
+    private var arrayListans2: ArrayList<String> = arrayListOf()
+    private var arrayListans3: ArrayList<String> = arrayListOf()
+    private var arrayListans4: ArrayList<String> = arrayListOf()
+    private var arrayListAnswer: ArrayList<String> = arrayListOf()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
 
         //問題解答画面に遷移
@@ -34,10 +40,26 @@ class Question : AppCompatActivity() {
             startActivity(back)
         }
 
+        //問題解答画面に遷移
+        val textView = findViewById<TextView>(R.id.textView2)
+        val suugakuButton = findViewById<Button>(R.id.suugaku)
+        suugakuButton.setOnClickListener {
+            selectData()
+            val string = arrayListId[0]
+            textView.setText(string)
+        }
+
         //問題をダウンロード
         val downButton = findViewById<Button>(R.id.download)
         downButton.setOnClickListener {
-            insertData(1,1,"最初に示された語と最もはっきりとした反対関係にある語はどれか【低俗】","神聖","高貴","上等","高尚","高尚")
+            deleteData("1")
+            insertData("1",1,"最初に示された語と最もはっきりとした反対関係にある語はどれか【低俗】","神聖","高貴","上等","高尚","高尚")
+            AlertDialog.Builder(this)
+                    .setTitle(R.string.dialog_title)
+                    .setMessage(R.string.dialog_del_message)
+                    .setPositiveButton(R.string.dialog_ok) { dialog, which ->
+                    }
+                .show()
         }
         //ホーム画面に遷移
         val backButton3 = findViewById<Button>(R.id.backButton3)
@@ -46,20 +68,21 @@ class Question : AppCompatActivity() {
             startActivity(back)
         }
     }
-    private fun deleteData(whereId: String) {
+
+    private fun deleteData(Id: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val whereClauses = "id = ?"
-            val whereArgs = arrayOf(whereId)
+            val whereArgs = arrayOf(Id)
             database.delete(tableName, whereClauses, whereArgs)
         }catch(exception: Exception) {
             Log.e("deleteData", exception.toString())
         }
     }
 
-    private fun insertData(id: Int,genre: Int,question: String,ans1: String,ans2: String,ans3: String,ans4: String,Answer: String) {
+    private fun insertData(id: String,genre: Int,question: String,ans1: String,ans2: String,ans3: String,ans4: String,Answer: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
@@ -72,11 +95,42 @@ class Question : AppCompatActivity() {
             values.put("ans2", ans2)
             values.put("ans3", ans3)
             values.put("ans4", ans4)
-            values.put("Ansewr",Answer)
+            values.put("Answer",Answer)
 
             database.insertOrThrow(tableName, null, values)
         }catch(exception: Exception) {
             Log.e("insertData", exception.toString())
+        }
+    }
+
+    private fun selectData() {
+        try {
+            arrayListId.clear();arrayListGenre.clear();arrayListQuestion.clear();arrayListans1.clear();
+            arrayListans2.clear();arrayListans3.clear();arrayListans4.clear();arrayListAnswer.clear();
+
+
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
+            val database = dbHelper.readableDatabase
+
+            val sql = "select id, genre, question, ans1, ans2, ans3, ans4, Answer from " + tableName + ";"
+
+            val cursor = database.rawQuery(sql, null)
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                    arrayListId.add(cursor.getString(0))
+                    arrayListGenre.add(cursor.getString(1))
+                    arrayListQuestion.add(cursor.getString(2))
+                    arrayListans1.add(cursor.getString(3))
+                    arrayListans2.add(cursor.getString(4))
+                    arrayListans3.add(cursor.getString(5))
+                    arrayListans4.add(cursor.getString(6))
+                    arrayListAnswer.add(cursor.getString(7))
+                    cursor.moveToNext()
+                }
+            }
+        }catch(exception: Exception) {
+            Log.e("selectData", exception.toString());
         }
     }
 }
