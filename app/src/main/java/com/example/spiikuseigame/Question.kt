@@ -33,20 +33,39 @@ class Question : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
 
-        //問題解答画面に遷移
+        //国語問題解答画面に遷移
         val kokugoButton = findViewById<Button>(R.id.kokugo)
         kokugoButton.setOnClickListener {
-            val back = Intent(this, Question2::class.java)
-            startActivity(back)
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
         }
 
-        //問題解答画面に遷移
-        val textView = findViewById<TextView>(R.id.textView2)
+        //社会問題解答画面に遷移
+        val shakaiButton = findViewById<Button>(R.id.shakai)
+        shakaiButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //理科問題解答画面に遷移
+        val rikaButton = findViewById<Button>(R.id.rika)
+        rikaButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //数学問題解答画面に遷移
         val suugakuButton = findViewById<Button>(R.id.suugaku)
         suugakuButton.setOnClickListener {
-            selectData()
-            val string = arrayListId[0]
-            textView.setText(string)
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //英語問題解答画面に遷移
+        val eigoButton = findViewById<Button>(R.id.eigo)
+        eigoButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
         }
 
         //問題をダウンロード
