@@ -2,4 +2,9 @@
     <string name="app_name">SPIikuseiGame</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="dialog_title">問題ダウンロード</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_del_message">問題のダウンロードが完了しました。</string>
 </resources>
