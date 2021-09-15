@@ -131,7 +131,7 @@
         motion:constraintSetEnd="@+id/step2"
         motion:autoTransition="animateToEnd"
         motion:motionInterpolator="linear"
-        motion:duration="2400" />
+        motion:duration="2600" />
     <Transition
         motion:constraintSetStart="@+id/step2"
         motion:constraintSetEnd="@+id/start"
