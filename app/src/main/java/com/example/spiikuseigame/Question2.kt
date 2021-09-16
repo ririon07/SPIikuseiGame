@@ -4,13 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
-import org.w3c.dom.Text
 import java.util.ArrayList
-import kotlin.random.Random
 
 class Question2 : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,7 +27,14 @@ class Question2 : AppCompatActivity() {
         setContentView(R.layout.activity_question2)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        selectData()
+        //ランダム数値生成
+        val range = (1..1)
+        val id = range.random()
+        //受け取った変数を入れる
+        val genre = intent.getStringExtra("Genre")
+        if (genre != null) {
+            selectData(genre,id.toString())
+        }
         val textView = findViewById<TextView>(R.id.question)
         val string = arrayListQuestion[0]
         textView.setText(string)
@@ -42,10 +46,12 @@ class Question2 : AppCompatActivity() {
         ans1.setOnClickListener {
             //textは受け渡す変数
             val text = arrayListans1[0]
-            val Answer1 = Intent(this, Answer::class.java)
+            val Answer = Intent(this, Answer::class.java)
             //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
-            Answer1.putExtra("TEXT_KEY",text)
-            startActivity(Answer1)
+            Answer.putExtra("TEXT_KEY",text)
+            Answer.putExtra("Genre",genre)
+            Answer.putExtra("Id",id.toString())
+            startActivity(Answer)
         }
 
         //解答２
@@ -55,10 +61,12 @@ class Question2 : AppCompatActivity() {
         ans2.setOnClickListener {
             //textは受け渡す変数
             val text = arrayListans2[0]
-            val Answer2 = Intent(this, Answer::class.java)
+            val Answer = Intent(this, Answer::class.java)
             //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
-            Answer2.putExtra("TEXT_KEY",text)
-            startActivity(Answer2)
+            Answer.putExtra("TEXT_KEY",text)
+            Answer.putExtra("Genre",genre)
+            Answer.putExtra("Id",id.toString())
+            startActivity(Answer)
         }
 
         //解答３
@@ -68,10 +76,12 @@ class Question2 : AppCompatActivity() {
         ans3.setOnClickListener {
             //textは受け渡す変数
             val text = arrayListans3[0]
-            val Answer3 = Intent(this, Answer::class.java)
+            val Answer = Intent(this, Answer::class.java)
             //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
-            Answer3.putExtra("TEXT_KEY",text)
-            startActivity(Answer3)
+            Answer.putExtra("TEXT_KEY",text)
+            Answer.putExtra("Genre",genre)
+            Answer.putExtra("Id",id.toString())
+            startActivity(Answer)
         }
 
         //解答４
@@ -81,10 +91,12 @@ class Question2 : AppCompatActivity() {
         ans4.setOnClickListener {
             //textは受け渡す変数
             val text = arrayListans4[0]
-            val Answer4 = Intent(this, Answer::class.java)
+            val Answer = Intent(this, Answer::class.java)
             //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
-            Answer4.putExtra("TEXT_KEY",text)
-            startActivity(Answer4)
+            Answer.putExtra("TEXT_KEY",text)
+            Answer.putExtra("Genre",genre)
+            Answer.putExtra("Id",id.toString())
+            startActivity(Answer)
         }
 
         //ホーム画面に遷移
@@ -95,7 +107,7 @@ class Question2 : AppCompatActivity() {
         }
     }
 
-    private fun selectData() {
+    private fun selectData(genre: String,range: String) {
         try {
             arrayListId.clear();arrayListGenre.clear();arrayListQuestion.clear();arrayListans1.clear();
             arrayListans2.clear();arrayListans3.clear();arrayListans4.clear();arrayListAnswer.clear();
@@ -110,14 +122,16 @@ class Question2 : AppCompatActivity() {
             if (cursor.count > 0) {
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
-                    arrayListId.add(cursor.getString(0))
-                    arrayListGenre.add(cursor.getString(1))
-                    arrayListQuestion.add(cursor.getString(2))
-                    arrayListans1.add(cursor.getString(3))
-                    arrayListans2.add(cursor.getString(4))
-                    arrayListans3.add(cursor.getString(5))
-                    arrayListans4.add(cursor.getString(6))
-                    arrayListAnswer.add(cursor.getString(7))
+                    if(cursor.getString(1)==genre && cursor.getString(0) == range) {
+                        arrayListId.add(cursor.getString(0))
+                        arrayListGenre.add(cursor.getString(1))
+                        arrayListQuestion.add(cursor.getString(2))
+                        arrayListans1.add(cursor.getString(3))
+                        arrayListans2.add(cursor.getString(4))
+                        arrayListans3.add(cursor.getString(5))
+                        arrayListans4.add(cursor.getString(6))
+                        arrayListAnswer.add(cursor.getString(7))
+                    }
                     cursor.moveToNext()
                 }
             }
