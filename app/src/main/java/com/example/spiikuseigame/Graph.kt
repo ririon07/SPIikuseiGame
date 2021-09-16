@@ -26,8 +26,6 @@ class Graph : AppCompatActivity() {
             startActivity(back)
         }
 
-
-
         //折れ線グラフ
         //表示用サンプルデータの作成
         val x = listOf<Float>(1f, 2f, 3f, 5f, 8f, 13f, 21f, 34f)//X軸データ
