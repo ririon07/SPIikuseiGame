@@ -70,6 +70,13 @@ class Question : AppCompatActivity() {
             startActivity(Que2)
         }
 
+        //一般問題解答画面に遷移
+        val ippanButton = findViewById<Button>(R.id.ippan)
+        ippanButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
         //問題をダウンロード
         val downButton = findViewById<Button>(R.id.download)
         downButton.setOnClickListener {
