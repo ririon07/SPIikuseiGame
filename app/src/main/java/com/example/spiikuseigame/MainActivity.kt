@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         //問題選択画面へ画面遷移
         val earnButton = findViewById<Button>(R.id.earnButton)
         earnButton.setOnClickListener {
-            val earn = Intent(this, Earn::class.java)
+            val earn = Intent(this, Question::class.java)
             startActivity(earn)
 
         }
