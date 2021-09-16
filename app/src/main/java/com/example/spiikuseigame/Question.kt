@@ -92,7 +92,7 @@ class Question : AppCompatActivity() {
         //ホーム画面に遷移
         val backButton3 = findViewById<Button>(R.id.backButton3)
         backButton3.setOnClickListener {
-            val back = Intent(this, Earn::class.java)
+            val back = Intent(this, MainActivity::class.java)
             startActivity(back)
         }
     }
