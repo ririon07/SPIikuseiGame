@@ -6,15 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
-import androidx.appcompat.app.AlertDialog
-import java.util.ArrayList
+import java.util.*
 
 class Question : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val dbName: String = "DB"
     private val tableName: String = "QuestionTable"
+    private val tableName2: String = "moneyTable"
+    private val tableName3: String = "itemTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
     private var arrayListGenre: ArrayList<String> = arrayListOf()
@@ -33,20 +35,46 @@ class Question : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
 
-        //問題解答画面に遷移
+        //国語問題解答画面に遷移
         val kokugoButton = findViewById<Button>(R.id.kokugo)
         kokugoButton.setOnClickListener {
-            val back = Intent(this, Question2::class.java)
-            startActivity(back)
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
         }
 
-        //問題解答画面に遷移
-        val textView = findViewById<TextView>(R.id.textView2)
+        //社会問題解答画面に遷移
+        val shakaiButton = findViewById<Button>(R.id.shakai)
+        shakaiButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //理科問題解答画面に遷移
+        val rikaButton = findViewById<Button>(R.id.rika)
+        rikaButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //数学問題解答画面に遷移
         val suugakuButton = findViewById<Button>(R.id.suugaku)
         suugakuButton.setOnClickListener {
-            selectData()
-            val string = arrayListId[0]
-            textView.setText(string)
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //英語問題解答画面に遷移
+        val eigoButton = findViewById<Button>(R.id.eigo)
+        eigoButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
+        }
+
+        //一般問題解答画面に遷移
+        val ippanButton = findViewById<Button>(R.id.ippan)
+        ippanButton.setOnClickListener {
+            val Que2 = Intent(this, Question2::class.java)
+            startActivity(Que2)
         }
 
         //問題をダウンロード
@@ -82,6 +110,7 @@ class Question : AppCompatActivity() {
         }
     }
 
+
     private fun insertData(id: String,genre: Int,question: String,ans1: String,ans2: String,ans3: String,ans4: String,Answer: String) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
@@ -102,6 +131,39 @@ class Question : AppCompatActivity() {
             Log.e("insertData", exception.toString())
         }
     }
+
+    private fun insertData2(id: String,moneys: Int) {
+        try {
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
+            val database = dbHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put("id", id)
+            values.put("moneys", moneys)
+
+            database.insertOrThrow(tableName2, null, values)
+        }catch(exception: Exception) {
+            Log.e("insertData2", exception.toString())
+        }
+    }
+
+    private fun insertData3(id: String, money: Int, item_name:String) {
+        try {
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
+            val database = dbHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put("id", id)
+            values.put("money", money)
+            values.put("item_name", item_name)
+
+            database.insertOrThrow(tableName3, null, values)
+        }catch(exception: Exception) {
+            Log.e("insertData3", exception.toString())
+        }
+    }
+
+
 
     private fun selectData() {
         try {
