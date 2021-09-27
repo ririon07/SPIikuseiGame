@@ -39,6 +39,10 @@ class Question : AppCompatActivity() {
         val kokugoButton = findViewById<Button>(R.id.kokugo)
         kokugoButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "1"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -46,6 +50,10 @@ class Question : AppCompatActivity() {
         val shakaiButton = findViewById<Button>(R.id.shakai)
         shakaiButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "3"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -53,6 +61,10 @@ class Question : AppCompatActivity() {
         val rikaButton = findViewById<Button>(R.id.rika)
         rikaButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "4"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -60,6 +72,10 @@ class Question : AppCompatActivity() {
         val suugakuButton = findViewById<Button>(R.id.suugaku)
         suugakuButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "2"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -67,6 +83,10 @@ class Question : AppCompatActivity() {
         val eigoButton = findViewById<Button>(R.id.eigo)
         eigoButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "5"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -74,6 +94,10 @@ class Question : AppCompatActivity() {
         val ippanButton = findViewById<Button>(R.id.ippan)
         ippanButton.setOnClickListener {
             val Que2 = Intent(this, Question2::class.java)
+            //textは受け渡す変数
+            val genre = "6"
+            //intent変数をつなげる(第一引数はキー，第二引数は渡したい変数)
+            Que2.putExtra("Genre",genre)
             startActivity(Que2)
         }
 
@@ -81,7 +105,18 @@ class Question : AppCompatActivity() {
         val downButton = findViewById<Button>(R.id.download)
         downButton.setOnClickListener {
             deleteData("1")
+            deleteData("2")
+            deleteData("3")
+            //国語
             insertData("1",1,"最初に示された語と最もはっきりとした反対関係にある語はどれか【低俗】","神聖","高貴","上等","高尚","高尚")
+            //数学
+            insertData("1",2,"1+1","1","2","3","4","2")
+            //社会
+            insertData("1",3,"刀狩をしたのは誰でしょう","織田信長","徳川家康","山田駿","坂本龍馬","豊臣秀吉")
+            //理科
+            //英語
+            //一般
+
             AlertDialog.Builder(this)
                     .setTitle(R.string.dialog_title)
                     .setMessage(R.string.dialog_del_message)
