@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
 import java.util.*
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val dbName: String = "DB"
@@ -49,8 +48,15 @@ class MainActivity : AppCompatActivity() {
         earnButton.setOnClickListener {
             val earn = Intent(this, Question::class.java)
             startActivity(earn)
-
         }
+
+        //ショップ画面へ画面遷移
+        val shopButton = findViewById<Button>(R.id.shopButton)
+        shopButton.setOnClickListener {
+            val shop = Intent(this, Shop::class.java)
+            startActivity(shop)
+        }
+
     }
 
 

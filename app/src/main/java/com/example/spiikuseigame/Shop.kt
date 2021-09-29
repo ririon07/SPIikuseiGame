@@ -1,17 +1,16 @@
 package com.example.spiikuseigame
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
 
-class FragmentShop : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+
+class Shop : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_shop)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_shop)
 
         //ホーム画面に遷移
         val backButton = findViewById<Button>(R.id.backButton)
@@ -19,5 +18,6 @@ class FragmentShop : AppCompatActivity() {
             val back = Intent(this, MainActivity::class.java)
             startActivity(back)
         }
+
     }
 }
