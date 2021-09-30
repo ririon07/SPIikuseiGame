@@ -42,8 +42,7 @@ class Graph : AppCompatActivity() {
         selectData()
         for(i in arrayListId.indices){
             val text1 = findViewById<TextView>(R.id.text)
-            text1.setText(arrayListCorrect[i])
-
+            text1.setText(arrayListId[i])
         }
 
 
