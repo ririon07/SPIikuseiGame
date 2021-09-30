@@ -2,6 +2,7 @@ package com.example.spiikuseigame
 
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.spiikuseigame.databinding.ActivityMainBinding
+import java.io.ByteArrayOutputStream
 import java.time.LocalDate
 import java.util.ArrayList
 
@@ -18,6 +20,7 @@ class Answer : AppCompatActivity() {
     private val dbName: String = "DB"
     private val tableName: String = "QuestionTable"
     private val tableName2: String = "sumTable"
+    private val tableName3: String = "moneyTable"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
     private var arrayListGenre: ArrayList<String> = arrayListOf()
@@ -54,7 +57,7 @@ class Answer : AppCompatActivity() {
 
         if(string == text){
             textView.setText("正解")
-            tr = 1
+
         }else{
             textView.setText("不正解")
             fa = 1
@@ -131,4 +134,26 @@ class Answer : AppCompatActivity() {
             Log.e("insertData", exception.toString())
         }
     }
+
+    private fun updateData(whereId: String, newName: String, newType: Int, newBitmap: Bitmap) {
+        try {
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
+            val database = dbHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put("name", newName)
+            values.put("type", newType)
+            val byteArrayOutputStream = ByteArrayOutputStream();
+            newBitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
+            val bytes = byteArrayOutputStream.toByteArray()
+            values.put("image", bytes)
+
+            val whereClauses = "id = ?"
+            val whereArgs = arrayOf(whereId)
+            database.update(tableName3, values, whereClauses, whereArgs)
+        }catch(exception: Exception) {
+            Log.e("updateData", exception.toString())
+        }
+    }
+
 }
