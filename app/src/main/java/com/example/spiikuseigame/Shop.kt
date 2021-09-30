@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import com.example.spiikuseigame.databinding.ActivityMainBinding
 
 
@@ -19,5 +20,10 @@ class Shop : AppCompatActivity() {
             startActivity(back)
         }
 
+        val icebutton = findViewById<ImageButton>(R.id.icebutton)
+        icebutton.setOnClickListener {
+            val get = Intent (this,MainActivity::class.java)
+            startActivity(get)
+        }
     }
 }

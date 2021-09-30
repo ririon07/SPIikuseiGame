@@ -7,26 +7,39 @@
     tools:context=".Shop">
 
     <ImageView
+        android:id="@+id/backimage"
+        android:layout_width="383dp"
+        android:layout_height="797dp"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
         android:id="@+id/shopbase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="562dp"
+        android:layout_height="517dp"
         android:src="@drawable/base"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
     <ImageView
         android:id="@+id/shopbase2"
-        android:layout_width="414dp"
-        android:layout_height="733dp"
+        android:layout_width="413dp"
+        android:layout_height="715dp"
         android:src="@drawable/base2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <ImageButton
         android:id="@+id/onigiributton"
@@ -49,31 +62,33 @@
         android:scaleType="fitCenter"
         android:src="@drawable/itemkoppepan"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/waterbutton"
-        android:layout_width="381dp"
-        android:layout_height="288dp"
-        android:layout_marginTop="320dp"
+        android:layout_width="362dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="388dp"
         android:background="#0000"
         android:scaleType="fitCenter"
         android:src="@drawable/itemwater"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/icebutton"
-        android:layout_width="381dp"
-        android:layout_height="288dp"
-        android:layout_marginTop="412dp"
+        android:layout_width="367dp"
+        android:layout_height="172dp"
+        android:layout_marginTop="464dp"
         android:background="#0000"
         android:scaleType="fitCenter"
         android:src="@drawable/itemice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,13 +97,14 @@
         android:layout_width="171dp"
         android:layout_height="47dp"
         android:text="ショップ"
+        android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="0.21" />
 
     <Button
         android:id="@+id/backButton"
