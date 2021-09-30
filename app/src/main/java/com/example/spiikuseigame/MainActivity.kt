@@ -26,12 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        //insertData("国語",1,0,1,"yyyy/MM/ss")
+        insertData("国語",5,0,1,"yyyy/MM/ss")
         //insertData2("国語",1,0,1,"yyyy/MM/ss")
-        selectData()
-        for(i in arrayListId.indices){
-            println(arrayListId[i])
-        }
         //selectData2()
         //arrayListId.get(0)
 
@@ -98,31 +94,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun selectData() {
-        try {
-            arrayListId.clear();arrayListCorrect.clear();arrayListIncorrect.clear();arrayListAnswer.clear();arrayListDays.clear()
-
-            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
-            val database = dbHelper.readableDatabase
-
-            val sql = "select id, correct, incorrect, answer, days from " + tableName + ";"
-
-            val cursor = database.rawQuery(sql, null)
-            if (cursor.count > 0) {
-                cursor.moveToFirst()
-                while (!cursor.isAfterLast) {
-                    arrayListId.add(cursor.getString(0))
-                    arrayListCorrect.add(cursor.getInt(1))
-                    arrayListIncorrect.add(cursor.getInt(2))
-                    arrayListAnswer.add(cursor.getInt(3))
-                    arrayListDays.add(cursor.getString(4))
-                    cursor.moveToNext()
-                }
-            }
-        }catch(exception: Exception) {
-            Log.e("selectData", exception.toString());
-        }
-    }
 
     private fun selectData2() {
         try {
