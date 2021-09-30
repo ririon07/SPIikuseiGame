@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         //selectData2()
         //arrayListId.get(0)
 
-
         //グラフ画面へ画面遷移
         val graphButton = findViewById<Button>(R.id.graphButton)
         graphButton.setOnClickListener {
