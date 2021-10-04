@@ -30,6 +30,7 @@ class Answer : AppCompatActivity() {
     private var arrayListans3: ArrayList<String> = arrayListOf()
     private var arrayListans4: ArrayList<String> = arrayListOf()
     private var arrayListAnswer: ArrayList<String> = arrayListOf()
+    private var arrayListMoney: ArrayList<Int> = arrayListOf()
     @RequiresApi(Build.VERSION_CODES.O)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,12 @@ class Answer : AppCompatActivity() {
 
         if(string == text){
             textView.setText("正解")
+            tr = 1
+//            selectMoney()
+//            var Money = arrayListMoney[0]
+//
+//            if()
+//            Money = Money + 1
 
         }else{
             textView.setText("不正解")
@@ -135,18 +142,14 @@ class Answer : AppCompatActivity() {
         }
     }
 
-    private fun updateData(whereId: String, newName: String, newType: Int, newBitmap: Bitmap) {
+    //お金処理
+    private fun updateData(whereId: String,Money: Int) {
         try {
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
             val values = ContentValues()
-            values.put("name", newName)
-            values.put("type", newType)
-            val byteArrayOutputStream = ByteArrayOutputStream();
-            newBitmap?.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream)
-            val bytes = byteArrayOutputStream.toByteArray()
-            values.put("image", bytes)
+            values.put("Money", Money)
 
             val whereClauses = "id = ?"
             val whereArgs = arrayOf(whereId)
@@ -155,5 +158,28 @@ class Answer : AppCompatActivity() {
             Log.e("updateData", exception.toString())
         }
     }
+
+    private fun selectMoney() {
+        try {
+            arrayListMoney.clear();
+
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
+            val database = dbHelper.readableDatabase
+
+            val sql = "select * from " + tableName3 + ";"
+
+            val cursor = database.rawQuery(sql, null)
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                        arrayListMoney.add(cursor.getInt(0))
+                    cursor.moveToNext()
+                }
+            }
+        } catch (exception: Exception) {
+            Log.e("selectMoney", exception.toString());
+        }
+    }
+
 
 }
