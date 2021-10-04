@@ -26,17 +26,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        insertData("国語",5,0,1,"yyyy/MM/ss")
-        //insertData2("国語",1,0,1,"yyyy/MM/ss")
-        //selectData2()
-        //arrayListId.get(0)
-
         //グラフ画面へ画面遷移
         val graphButton = findViewById<Button>(R.id.graphButton)
         graphButton.setOnClickListener {
             val graph = Intent(this, Graph::class.java)
             startActivity(graph)
         }
+
 
         //問題選択画面へ画面遷移
         val earnButton = findViewById<Button>(R.id.earnButton)
@@ -50,73 +46,6 @@ class MainActivity : AppCompatActivity() {
         shopButton.setOnClickListener {
             val shop = Intent(this, Shop::class.java)
             startActivity(shop)
-        }
-
-    }
-
-
-    private fun insertData(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
-        try {
-            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
-            val database = dbHelper.writableDatabase
-
-            val values = ContentValues()
-            values.put("id", id)
-            values.put("correct", correct)
-            values.put("incorrect", incorrect)
-            values.put("answer", answer)
-            values.put("days",days)
-
-            database.insertOrThrow(tableName, null, values)
-        }catch(exception: Exception) {
-            Log.e("insertData", exception.toString())
-        }
-    }
-
-
-    private fun insertData2(id: String,correct: Int,incorrect: Int,answer: Int,days: String) {
-        try {
-            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
-            val database = dbHelper.writableDatabase
-
-            val values = ContentValues()
-            values.put("id", id)
-            values.put("correct", correct)
-            values.put("incorrect", incorrect)
-            values.put("answer", answer)
-            values.put("days", days)
-
-            database.insertOrThrow(tableName2, null, values)
-        }catch(exception: Exception) {
-            Log.e("insertData2", exception.toString())
-        }
-    }
-
-
-
-    private fun selectData2() {
-        try {
-            arrayListId.clear();arrayListCorrect.clear();arrayListIncorrect.clear();arrayListAnswer.clear();arrayListDays.clear()
-
-            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
-            val database = dbHelper.readableDatabase
-
-            val sql = "select id, correct, incorrect, answer, days from " + tableName2 + ";"
-
-            val cursor = database.rawQuery(sql, null)
-            if (cursor.count > 0) {
-                cursor.moveToFirst()
-                while (!cursor.isAfterLast) {
-                    arrayListId.add(cursor.getString(0))
-                    arrayListCorrect.add(cursor.getInt(1))
-                    arrayListIncorrect.add(cursor.getInt(2))
-                    arrayListAnswer.add(cursor.getInt(3))
-                    arrayListDays.add(cursor.getString(4))
-                    cursor.moveToNext()
-                }
-            }
-        }catch(exception: Exception) {
-            Log.e("selectData2", exception.toString());
         }
     }
 }
