@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SPIikuseiGame">
         <activity android:name=".Shop"></activity>
-        <activity android:name=".activity_shop" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Answer" />
         <activity android:name=".Question2" />
