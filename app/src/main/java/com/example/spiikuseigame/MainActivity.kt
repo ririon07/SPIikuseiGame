@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spiikuseigame.databinding.ActivityMainBinding
 import java.util.*
@@ -46,6 +47,13 @@ class MainActivity : AppCompatActivity() {
         shopButton.setOnClickListener {
             val shop = Intent(this, Shop::class.java)
             startActivity(shop)
+        }
+
+        //ショップ画面へ画面遷移
+        val char = findViewById<ImageView>(R.id.character)
+        val change = findViewById<Button>(R.id.cleanButton)
+        change.setOnClickListener {
+            char.setImageResource(R.drawable.rika2)
         }
     }
 }
