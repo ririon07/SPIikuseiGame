@@ -55,16 +55,11 @@ class Answer : AppCompatActivity() {
         val string = arrayListAnswer[0]
 
         val textView = findViewById<TextView>(R.id.Ans)
-
+        //おっぱいもみもみしたい。
         if(string == text){
             textView.setText("正解")
             tr = 1
-//            selectMoney()
-//            var Money = arrayListMoney[0]
-//
-//            if()
-//            Money = Money + 1
-
+            insertMoney()
         }else{
             textView.setText("不正解")
             fa = 1
@@ -143,8 +138,26 @@ class Answer : AppCompatActivity() {
     }
 
     //お金処理
-    private fun updateData(whereId: String,Money: Int) {
+    private fun insertMoney() {
         try {
+            var id = 1
+            var money = 1
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
+            val database = dbHelper.writableDatabase
+
+            val values = ContentValues()
+            values.put("id", id)
+            values.put("Money", money)
+
+            database.insertOrThrow(tableName3, null, values)
+        }catch(exception: Exception) {
+            Log.e("insertMoney", exception.toString())
+        }
+    }
+
+    private fun updateMoney(Money: Int) {
+        try {
+            val whereId = "1"
             val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion);
             val database = dbHelper.writableDatabase
 
@@ -180,6 +193,4 @@ class Answer : AppCompatActivity() {
             Log.e("selectMoney", exception.toString());
         }
     }
-
-
 }
