@@ -11,6 +11,7 @@ import com.example.spiikuseigame.databinding.ActivityMainBinding
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.github.mikephil.charting.utils.ColorTemplate
 import java.util.ArrayList
 
 class Graph : AppCompatActivity() {
@@ -40,47 +41,85 @@ class Graph : AppCompatActivity() {
         }
 
         selectData()
-        var cor = arrayListCorrect.sum()
-        var inc = arrayListIncorrect.sum()
-//        var text1 = findViewById<TextView>(R.id.text)
-//        text1.setText(cor.toString())
-//        var text2 = findViewById<TextView>(R.id.text)
-//        text2.setText(inc.toString())
+        var num = 0
+        var num2 = 0
+        var num3 = 0
+        var num4 = 0
+        var num5 = 0
+        var num6 = 0
 
-        //表示用サンプルデータの作成//
-        val x = listOf<Float>(1f, 2f, 3f, 4f, 6f, 7f)//X軸データ
-        val y = x.map{it*it}//Y軸データ（X軸の2乗）
+        var count = 0
 
-        //①Entryにデータ格納
-        var entryList = mutableListOf<BarEntry>()
-        for(i in x.indices){
-            entryList.add(
-                BarEntry(x[i], y[i])
-            )
+        //各教科ごとの合計を表示
+        for (i in arrayListCorrect){
+
+            if(arrayListCorrect[count]==1){
+                if (arrayListGenre[count].toInt()==1){
+                    num = num + 1
+                }
+                else if(arrayListGenre[count].toInt()==2){
+                    num2 = num2 + 1
+                }
+                else if(arrayListGenre[count].toInt()==3){
+                    num3 = num3 + 1
+                }
+                else if(arrayListGenre[count].toInt()==4){
+                    num4 = num4 + 1
+                }
+                else if(arrayListGenre[count].toInt()==5){
+                    num5 = num5 + 1
+                }
+                else if(arrayListGenre[count].toInt()==6){
+                    num6 = num6 + 1
+                }
+            }
+            count = count + 1
         }
 
-        //BarDataSetのリスト
-        val barDataSets = mutableListOf<IBarDataSet>()
-        //②DataSetにデータ格納
-        val barDataSet = BarDataSet(entryList, "国語")
-        //③DataSetのフォーマット指定
-        barDataSet.color = Color.GREEN
-        //リストに格納
-        barDataSets.add(barDataSet)
+//        var cor = arrayListCorrect.sum()
+//        var inc = arrayListIncorrect.sum()
+        var text2 = findViewById<TextView>(R.id.text2)
+        text2.setText(num.toString())
+        var text3 = findViewById<TextView>(R.id.text3)
+        text3.setText(num2.toString())
+        var text4 = findViewById<TextView>(R.id.text4)
+        text4.setText(num3.toString())
+        var text5 = findViewById<TextView>(R.id.text5)
+        text5.setText(num4.toString())
+        var text6 = findViewById<TextView>(R.id.text6)
+        text6.setText(num5.toString())
+        var text7 = findViewById<TextView>(R.id.text7)
+        text7.setText(num6.toString())
 
-        //④BarDataにBarDataSet格納
-        val barData = BarData(barDataSets)
-        //⑤BarChartにBarData格納
         val barChart = findViewById<BarChart>(R.id.barChartExample2)
-        barChart.data = barData
-        //⑥Chartのフォーマット指定
-        //X軸の設定
-        barChart.xAxis.apply {
-            isEnabled = true
-            textColor = Color.BLACK
-        }
-        //⑦barchart更新
-        barChart.invalidate()
+        val Data = ArrayList<BarEntry>()
+
+//        Data.add(num)
+//        Data.add(num2)
+//        Data.add(num3)
+//        Data.add(num4)
+//        Data.add(num5)
+//        Data.add(num6)
+
+        Data.add(BarEntry(num.toFloat(), 10f))
+        Data.add(BarEntry(num2.toFloat(), 20f))
+        Data.add(BarEntry(num3.toFloat(), 30f))
+        Data.add(BarEntry(num4.toFloat(), 40f))
+        Data.add(BarEntry(num5.toFloat(), 50f))
+        Data.add(BarEntry(num6.toFloat(), 60f))
+        val bardataset = BarDataSet(Data, "教科ごとの正解数")
+        barChart.animateY(50)
+        val data = BarData(bardataset)
+        bardataset.setColors(*ColorTemplate.COLORFUL_COLORS)
+        barChart.setData(data)
+//        //⑥Chartのフォーマット指定
+//        //X軸の設定
+//        barChart.xAxis.apply {
+//            isEnabled = true
+//            textColor = Color.BLACK
+//        }
+//        //⑦barchart更新
+//        barChart.invalidate()
     }
 
     private fun selectData() {
