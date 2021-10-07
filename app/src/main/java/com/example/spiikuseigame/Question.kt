@@ -114,8 +114,11 @@ class Question : AppCompatActivity() {
             //社会
             insertData("1",3,"刀狩をしたのは誰でしょう","織田信長","徳川家康","山田駿","坂本龍馬","豊臣秀吉")
             //理科
+            insertData("1",4,"ナトリウムの炎色反応は何色か","オレンジ","青","黄","紫","")
             //英語
+            insertData("1",5,"私はアメリカです","I am from America","I am America","It is America","She is my America","I am America")
             //一般
+            insertData("1",6,"発展途上国に対して、先進国が行う経済的援助は次のうちどれ？","ODA","NGO","WTO","TPO","ODA")
 
             AlertDialog.Builder(this)
                     .setTitle(R.string.dialog_title)
