@@ -114,9 +114,8 @@
 
     <TextView
         android:id="@+id/gettext"
-        android:layout_width="245dp"
-        android:layout_height="55dp"
-        android:text="購入しました"
+        android:layout_width="406dp"
+        android:layout_height="71dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
