@@ -21,7 +21,8 @@ public class SQLiteOpen (context: Context,
             "create table if not exists moneyTable (id text, moneys int)");
         database?.execSQL(
         "create table if not exists itemTable (id text, money int, item_name text)");
-
+        database?.execSQL(
+                "create table if not exists character (id text, hp int, take text, eat text)");
     }
 
     override fun onUpgrade(database: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

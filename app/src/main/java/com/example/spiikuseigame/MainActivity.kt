@@ -15,12 +15,18 @@ class MainActivity : AppCompatActivity() {
     private val dbName: String = "DB"
     private val tableName: String = "sumTable"
     private val tableName2: String = "monthTable"
+    private val char: String = "character"
     private val dbVersion: Int = 1
     private var arrayListId: ArrayList<String> = arrayListOf()
     private var arrayListCorrect: ArrayList<Int> = arrayListOf()
     private var arrayListIncorrect: ArrayList<Int> = arrayListOf()
     private var arrayListAnswer: ArrayList<Int> = arrayListOf()
     private var arrayListDays: ArrayList<String> = arrayListOf()
+
+    private var arrayListCharId: ArrayList<String> = arrayListOf()
+    private var arrayListCharHp: ArrayList<String> = arrayListOf()
+    private var arrayListCharTake: ArrayList<String> = arrayListOf()
+    private var arrayListCharEat: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +55,41 @@ class MainActivity : AppCompatActivity() {
             startActivity(shop)
         }
 
-        //ショップ画面へ画面遷移
+        //キャラクター
         val char = findViewById<ImageView>(R.id.character)
         val change = findViewById<Button>(R.id.cleanButton)
         change.setOnClickListener {
             char.setImageResource(R.drawable.rika2)
+        }
+        selectcharData()
+
+
+    }
+
+    private fun selectcharData() {
+        try {
+            arrayListCharId.clear();arrayListCharHp.clear();arrayListCharTake.clear();arrayListCharEat.clear();
+
+            val dbHelper = SQLiteOpen(applicationContext, dbName, null, dbVersion)
+            val database = dbHelper.readableDatabase
+
+            val sql = "select * from " + char + ";"
+
+            val cursor = database.rawQuery(sql, null)
+            if (cursor.count > 0) {
+                cursor.moveToFirst()
+                while (!cursor.isAfterLast) {
+                    arrayListCharId.add(cursor.getString(0))
+                    arrayListCharHp.add(cursor.getString(1))
+                    arrayListCharTake.add(cursor.getString(2))
+                    arrayListCharEat.add(cursor.getString(3))
+
+                    cursor.moveToNext()
+                }
+            }
+        }catch(exception: Exception) {
+            Log.e("selectData", exception.toString());
+            print("エラーのキャッチしたお")
         }
     }
 }
